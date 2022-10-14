@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - GOOGLE IDTOKEN VERIFICATOR FRONTEND</title>
+  <style>
+    #idtoken {
+	    width: 100%
+    }
+
+    #result {
+	    margin-top: 5px;
+	    background-color: #f8f386;
+	    padding: 5px;
+    }
+</style>
+</head>
+
+<body translate="no" >
+  IDTOKEN TO ('YOUR ENDPOINT')
+  <textarea id="idtoken" name="idtoken" rows=12></textarea>
+  <label for="cars">Choose a ClientId:</label>
+  <select name="clientid" id="clientid">
+	  <option value="YOUR CIENT ID">
+		  YOUR CIENT ID
+	  </option>
+  </select>
+
+  <button id="checkbtn">CHECK</button>
+  <div id="result">
+  </div>
+  
+  
+  <script id="rendered-js" >
+        const endpoint = "YOUR ENDPOINT URL"
+        checkbtn.addEventListener("click", async () => {
+	        const data = await check(idtoken.value, clientid.value);
+	        result.innerHTML = "<pre>" + JSON.stringify(data, null, "\t") + "</pre>";
+        });
+
+        async function check(idtoken = null, clientId = null) {
+	        const options = {
+		        method: "POST",
+		        body: JSON.stringify({
+			        idtoken,
+			        clientId
+		        })
+	        };
+
+	        try {
+		        const response = await fetch(endpoint, options);
+		        const data = await response.json();
+		        console.log(data);
+		        return await data;
+	        } catch (e) {
+		      console.log(e);
+		      return { error: e };
+	        }
+        }
+  </script>
+
+</body>
+</html>
