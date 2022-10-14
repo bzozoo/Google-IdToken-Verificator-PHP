@@ -1,0 +1,19 @@
+{
+    "name": "bzozoo/gvalidator",
+    "description": "Giigle IDTokens Validation",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bzozoo\\Gvalidator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bata Zoltán",
+            "email": "47896536+bzozoo@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "google/apiclient": "2.12.1"
+    }
+}
